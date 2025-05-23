@@ -1,21 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --primary: #291F1E;
+  --secondary: #37393A;
+  --accent: #FF7D2C;
+  --background: #F4F4ED;
 }
 
 body {
-  color: var(--foreground);
+  color: var(--primary);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+  /* font-family: Arial, Helvetica, sans-serif; */
+} 
