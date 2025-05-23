@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Prompt } from "next/font/google";
 import "./globals.css";
+import Navbar from "./component/Navbar";
 
 const prompt = Prompt({
   subsets: ['thai', 'latin'],
@@ -22,8 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${prompt.variable} antialiased`}
+        className={`${prompt.variable} antialiased min-h-screen`}
       >
+        <Navbar />
         {children}
       </body>
     </html>

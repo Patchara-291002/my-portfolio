@@ -8,8 +8,20 @@
   --background: #F4F4ED;
 }
 
+@theme {
+  --color-primaryColor: var(--primary);
+  --color-secondaryColor: var(--secondary);
+  --color-accentColor: var(--accent);
+  --color-backgroundColor: var(--background);
+}
+
 body {
   color: var(--primary);
   background: var(--background);
   /* font-family: Arial, Helvetica, sans-serif; */
 } 
+
+
+.navbar-shadow {
+  box-shadow: 0 2px 15px 4px rgba(0, 0, 0, 0.05);
+}
