@@ -1,55 +1,57 @@
 'use client'
 
-import { MenuIcon } from './Icon'
-import { useState } from 'react';
+import { MenuIcon, UserIcon, MailIcon, FolderIcon } from './Icon'
+import Resolution from '@/utils/ResolutionTracker';
+import React, { useEffect, useState } from 'react';
 
 
 interface NavbarProps {
     path: {
         name: string;
         link: string;
+        icon: React.ReactNode;
     }[]
-}
-
-interface MobileNavbarProps {
-    isSidebarOpen: boolean;
-    setIsSidebarOpen: (isOpen: boolean) => void;
 }
 
 export default function Navbar() {
 
-    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+    const [deviceType, setDeviceType] = useState(Resolution.getDeviceType());
+
+    useEffect(() => {
+        setDeviceType(Resolution.getDeviceType());
+
+        const unsubscribe = Resolution.addListener(() => {
+            setDeviceType(Resolution.getDeviceType());
+        });
+
+        return () => unsubscribe();
+    }, [])
 
     const path = [
         {
             name: "About me",
-            link: "#"
+            link: "#",
+            icon: <UserIcon w="24" h="24" color="#291F1E" />
         },
         {
             name: "Projects",
-            link: "#"
+            link: "#",
+            icon: <FolderIcon w="24" h="24" color="#291F1E" />
         },
         {
             name: "Contact",
-            link: "#"
+            link: "#",
+            icon: <MailIcon w="24" h="24" color="#291F1E" />
         }
     ]
 
     return (
         <>
-            <div className="hidden lg:block">
+            {deviceType === 'desktop' ? (
                 <DesktopNavbar path={path} />
-            </div>
-
-            <div className="block lg:hidden">
-                <MobileNavbar path={path} setIsSidebarOpen={setIsSidebarOpen} isSidebarOpen={isSidebarOpen} />
-            </div>
-
-            {
-                isSidebarOpen && (
-                    <MobileSidebar path={path} setIsSidebarOpen={setIsSidebarOpen} isSidebarOpen={isSidebarOpen} />
-                )
-            }
+            ) : (
+                <MobileNavbar path={path} />
+            )}
         </>
     )
 }
@@ -57,15 +59,15 @@ export default function Navbar() {
 const DesktopNavbar = ({ path }: NavbarProps) => {
     return (
         <div
-            className='w-full py-4 navbar-shadow'
+            className='fixed top-0 left-0 w-full py-4 navbar-shadow bg-backgroundColor'
         >
             <div
                 className='max-w-[1280px] px-4 mx-auto flex justify-between items-center'
             >
                 <p
-                    className='text-3xl font-bold text-primaryColor'
+                    className='text-2xl font-black text-primaryColor'
                 >
-                    Patchara K.
+                    PORTFOLIO
                 </p>
                 <div
                     className='flex items-center justify-between gap-10'
@@ -76,7 +78,7 @@ const DesktopNavbar = ({ path }: NavbarProps) => {
                         {
                             path.map((item, index) => (
                                 <a
-                                    className='font-medium text-secondaryColor'
+                                    className='font-normal text-primaryColor'
                                     href={item.link}
                                     key={index}
                                 >
@@ -86,7 +88,7 @@ const DesktopNavbar = ({ path }: NavbarProps) => {
                         }
                     </div>
                     <button
-                        className='bg-accentColor py-[6px] px-[12px] rounded-xl font-semibold text-backgroundColor cursor-pointer'
+                        className='bg-primaryColor py-[6px] px-[12px] rounded-xl font-semibold text-backgroundColor cursor-pointer hover:bg-accentColor hover:text-backgroundColor'
                     >
                         Download CV
                     </button>
@@ -96,53 +98,64 @@ const DesktopNavbar = ({ path }: NavbarProps) => {
     )
 }
 
-const MobileNavbar = ({ path, setIsSidebarOpen, isSidebarOpen }: NavbarProps & MobileNavbarProps) => {
+const MobileNavbar = ({ path }: NavbarProps ) => {
+
+    const [isNavbarOpen, setIsNavbarOpen] = useState<boolean>(false);
+
     return (
         <div
-            className='w-full py-4 navbar-shadow'
+            className='w-full py-4 navbar-shadow '
         >
             <div
                 className='max-w-[1280px] px-4 mx-auto flex justify-between items-center'
             >
                 <p
-                    className='text-3xl font-bold text-primaryColor'
+                    className='text-2xl font-bold text-primaryColor'
                 >
                     Patchara K.
                 </p>
-                <button
-                    className='p-2 cursor-pointer bg-accentColor rounded-xl'
-                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                <div
+                    className='relative'
                 >
-                    <MenuIcon
-                        w="24"
-                        h="24"
-                        color="#F4F4ED"
-                    />
-                </button>
-            </div>
-        </div>
-    )
-}
+                    <button
+                        className='p-2 cursor-pointer bg-accentColor rounded-xl'
+                        onClick={() => setIsNavbarOpen(!isNavbarOpen)}
+                        aria-label='Toggle Menu'
+                    >
+                        <MenuIcon
+                            w="24"
+                            h="24"
+                            color="#F4F4ED"
+                        />
+                    </button>
+                    {
+                        isNavbarOpen && (
+                            <div
+                                className='absolute top-[46px] right-0 bg-backgroundColor border border-white w-[200px] rounded-lg shadow-lg flex flex-col items-center gap-4 p-4'
+                            >
+                                {
+                                    path.map((item, index) => (
+                                        <button
+                                            className='flex items-center w-full gap-4 font-semibold text-secondaryColor justify-items-start'
+                                            key={index}
+                                            onClick={() => {
+                                                setIsNavbarOpen(false);
+                                            }}
+                                        >
+                                            {item.icon}
+                                            <a
+                                                href={item.link}
+                                            >
+                                                {item.name}
+                                            </a>
+                                        </button>
+                                    ))
+                                }
+                            </div>
+                        )
 
-const MobileSidebar = ({ path, setIsSidebarOpen, isSidebarOpen }: NavbarProps & MobileNavbarProps) => {
-    return (
-        <div
-            className='absolute inset-0 z-10 w-full h-screen bg-black/20 blur-sm'
-        >
-            <div
-                className='absolute top-0 right-0 w-[50%] bg-backgroundColor navbar-shadow h-full'
-            >
-                {
-                    path.map((item, index) => (
-                        <a
-                            className='font-medium text-secondaryColor'
-                            href={item.link}
-                            key={index}
-                        >
-                            {item.name}
-                        </a>
-                    ))
-                }
+                    }
+                </div>
             </div>
         </div>
     )
