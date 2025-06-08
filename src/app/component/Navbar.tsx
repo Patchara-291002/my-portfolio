@@ -59,7 +59,7 @@ export default function Navbar() {
 const DesktopNavbar = ({ path }: NavbarProps) => {
     return (
         <div
-            className='fixed top-0 left-0 w-full py-4 navbar-shadow bg-backgroundColor'
+            className='fixed top-0 left-0 z-50 w-full py-4 navbar-shadow bg-backgroundColor'
         >
             <div
                 className='max-w-[1280px] px-4 mx-auto flex justify-between items-center'
@@ -104,7 +104,7 @@ const MobileNavbar = ({ path }: NavbarProps ) => {
 
     return (
         <div
-            className='w-full py-4 navbar-shadow '
+            className='z-50 w-full py-4 navbar-shadow'
         >
             <div
                 className='max-w-[1280px] px-4 mx-auto flex justify-between items-center'
