@@ -7,10 +7,16 @@ import Footer from "./component/Footer";
 export default function Home() {
   return (
     <>
-      <Introduction />
+      <section id="about">
+        <Introduction />
+      </section>
       <TechStack />
-      <ProjectPage />
-      <GetInTouchPage />
+      <section id="projects">
+        <ProjectPage />
+      </section>
+      <section id="contact">
+        <GetInTouchPage />
+      </section>
       <Footer />
     </>
   );

@@ -95,11 +95,13 @@ export default function ProjectCardMobile({ project, isActive }: ProjectProps) {
                                 >
                                     Github
                                 </button>
-                                <button className='px-4 py-2 text-sm font-medium rounded-lg cursor-pointer bg-accentColor text-backgroundColor button-shadow'
-                                    onClick={() => window.open(project.githubLink, '_blank')}
-                                >
-                                    Demo
-                                </button>
+                                {project.demoLink !== '' && (
+                                    <button className='px-4 py-2 text-sm font-medium rounded-lg cursor-pointer bg-accentColor text-backgroundColor button-shadow'
+                                        onClick={() => window.open(project.githubLink, '_blank')}
+                                    >
+                                        Demo
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>

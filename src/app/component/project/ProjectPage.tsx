@@ -17,9 +17,21 @@ export default function ProjectPage() {
 
     const projects = [
         {
+            name: 'Image Uploader',
+            image: '/AWS S3.png',
+            description: 'A backend service for uploading images and storing them on AWS S3. Returns a public URL for accessing the uploaded file.',
+            techStack: [
+                'Node.js',
+                'AWS S3',
+                'multer'
+            ],
+            demoLink: '',
+            githubLink: '#'
+        },
+        {
             name: 'Taskly – Task Management for Students',
             image: '/Home.jpg',
-            description: 'A web-based task management tool designed for students to create projects, collaborate with teammates, track task progress, and receive notifications.',
+            description: 'A web-based task management tool designed for students to create projects, collaborate with teammates, track task progress, and receive notifications. The system also provides visualization tools such as Kanban boards, Gantt charts, and timetables, along with other views to help students organize and monitor their tasks more effectively. In addition, the platform supports notification via LINE to ensure users never miss important updates.',
             techStack: [
                 'Next.js',
                 'Tailwind CSS',
@@ -27,42 +39,32 @@ export default function ProjectPage() {
                 'AWS S3',
                 'MongoDB'
             ],
-            demoLink: '#',
-            githubLink: '#'
-        },
-        {
-            name: 'Image Uploader',
-            image: '/Home.jpg',
-            description: 'A backend service for uploading images and storing them on AWS S3. Returns a public URL for accessing the uploaded file.',
-            techStack: [
-                'Node.js',
-                'AWS S3',
-                'multer'
-            ],
-            demoLink: '#',
-            githubLink: '#'
-        },
-        {
-            name: 'Weather App',
-            image: '/Home.jpg',
-            description: 'A simple weather app that displays current weather data based on the city name entered by the user, focusing on API usage and frontend development.',
-            techStack: [
-                'Vite',
-                'Tailwind CSS',
-            ],
-            demoLink: '#',
-            githubLink: '#'
+            demoLink: '',
+            githubLink: 'https://github.com/Patchara-291002/Taskly-Frontend'
         },
         {
             name: 'Todo List',
-            image: '/Home.jpg',
+            image: '/TodoList.png',
             description: 'A basic todo list application that stores tasks using localStorage. Built to practice UI design and state management in the browser.',
             techStack: [
+                'React.js',
+                'Vite',
+                'Bootstrap',
+            ],
+            demoLink: 'https://react-todo-pat.netlify.app',
+            githubLink: 'https://github.com/Patchara-291002/Todo-app'
+        },
+        {
+            name: 'Weather App',
+            image: '/WeatherApp.png',
+            description: 'A simple weather app that displays current weather data based on the city name entered by the user, focusing on API usage and frontend development.',
+            techStack: [
+                'React.js',
                 'Vite',
                 'Tailwind CSS',
             ],
-            demoLink: '#',
-            githubLink: '#'
+            demoLink: 'https://patchara-weather-app.netlify.app',
+            githubLink: 'https://github.com/Patchara-291002/Weather-app'
         },
     ]
 
