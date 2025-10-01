@@ -1,7 +1,5 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { RightArrowIcon, LeftArrowIcon } from '../Icon'
-import Resolution from '@/utils/ResolutionTracker';
 
 interface ProjectProps {
     project: {
@@ -17,26 +15,12 @@ interface ProjectProps {
 
 export default function ProjectCardMobile({ project, isActive }: ProjectProps) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [isHover, setIsHover] = useState<boolean>(false);
-
-    const [deviceType, setDeviceType] = useState(Resolution.getDeviceType());
 
     useEffect(() => {
-        setDeviceType(Resolution.getDeviceType());
-
-        const unsubscribe = Resolution.addListener(() => {
-            setDeviceType(Resolution.getDeviceType());
-        });
-
-        return () => unsubscribe();
-    }, [])
-
-    useEffect(() => {
-        // Auto-close description เมื่อ slide ไม่ active อีกต่อไป
         if (!isActive && isOpen) {
             setIsOpen(false);
         }
-    }, [isActive]);
+    }, [isActive, isOpen]);
 
     const handleToggle = () => {
         if (isActive) {
@@ -50,8 +34,6 @@ export default function ProjectCardMobile({ project, isActive }: ProjectProps) {
             style={{
                 height: isOpen ? "520px" : '267px',
             }}
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
             onClick={handleToggle}
         >
             <p

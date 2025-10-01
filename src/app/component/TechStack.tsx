@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { HtmlIcon, CssIcon, JavascriptIcon, TypescriptIcon, ReactIcon, NextjsIcon, TailwindIcon, HerokuIcon, MongodbIcon, PostmanIcon, FigmaIcon, GithubIcon, MysqlIcon, ChakraIcon } from './Icon'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'

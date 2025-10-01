@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react'
+import React, { useState, forwardRef, useImperativeHandle } from 'react'
 
 interface AlertItem {
     id: string;

@@ -1,8 +1,6 @@
 'use client'
 
-import Image from 'next/image'
 import { useState, useEffect, useMemo, useRef } from 'react'
-import { RightArrowIcon, LeftArrowIcon } from '../Icon'
 import Resolution from '@/utils/ResolutionTracker';
 import ProjectCardMobile from './ProjectCard';
 
@@ -12,20 +10,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
 
 gsap.registerPlugin(ScrollTrigger);
-
-interface ProjectProps {
-    project: {
-        name: string;
-        image: string;
-        description: string;
-        techStack: string[];
-        demoLink: string;
-        githubLink: string;
-    }
-}
 
 export default function Project() {
 

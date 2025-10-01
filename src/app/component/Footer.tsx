@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function Footer() {
     return (
         <div
@@ -29,22 +27,6 @@ export default function Footer() {
                         <div
                             className='flex justify-between w-full max-w-[500px] text-sm text-backgroundColor'
                         >
-                            {/* <div
-                                className='flex flex-col gap-2'
-                            >
-                                <p
-                                >
-                                    About Me
-                                </p>
-                                <p
-                                >
-                                    Projects
-                                </p>
-                                <p
-                                >
-                                    Contact
-                                </p>
-                            </div> */}
                             <div
                                 className='flex flex-col gap-2'
                             >

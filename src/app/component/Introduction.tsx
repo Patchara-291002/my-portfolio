@@ -2,8 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { GithubIcon, FileIcon, LinkedinIcon, MailIcon } from './Icon'
+import { FileIcon, MailIcon } from './Icon'
 import { gsap } from 'gsap'
 import { useEffect, useState, useRef } from 'react'
 import Resolution from '@/utils/ResolutionTracker';
@@ -30,23 +29,23 @@ export default function Introduction() {
     const codeRef = useRef(null);
     const buttonRef = useRef(null);
 
-    const LinkItem = [
-        {
-            name: "CV",
-            link: "#",
-            icon: <FileIcon w="24" h="24" color="#291F1E" />
-        },
-        {
-            name: "Github",
-            link: "#",
-            icon: <GithubIcon w="24" h="24" color="#291F1E" />
-        },
-        {
-            name: "LinkedIn",
-            link: "#",
-            icon: <LinkedinIcon w="24" h="24" color="#291F1E" />
-        }
-    ]
+    // const LinkItem = [
+    //     {
+    //         name: "CV",
+    //         link: "#",
+    //         icon: <FileIcon w="24" h="24" color="#291F1E" />
+    //     },
+    //     {
+    //         name: "Github",
+    //         link: "#",
+    //         icon: <GithubIcon w="24" h="24" color="#291F1E" />
+    //     },
+    //     {
+    //         name: "LinkedIn",
+    //         link: "#",
+    //         icon: <LinkedinIcon w="24" h="24" color="#291F1E" />
+    //     }
+    // ]
 
     const [deviceType, setDeviceType] = useState(Resolution.getDeviceType());
 
@@ -210,3 +209,5 @@ const CodeMockup = React.forwardRef<HTMLDivElement>((_, ref) => {
         </div>
     )
 })
+
+CodeMockup.displayName = 'CodeMockup'

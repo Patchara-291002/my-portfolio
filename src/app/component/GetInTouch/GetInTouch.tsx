@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import { BlopIcon, GithubIcon, LinkedinIcon, MailIcon, PhoneIcon, PinIcon, UserIcon } from '../Icon'
+import { useEffect, useRef } from 'react'
+import { GithubIcon, MailIcon, PhoneIcon, PinIcon } from '../Icon'
 import Link from 'next/link';
 import Form from './Form';
 import Alert, { AlertRef } from './Alert';
@@ -73,10 +73,10 @@ export default function GetInTouch() {
                         <p
                             className='text-6xl text-pretty font-black leading-tight text-accentColor'
                         >
-                            Let's Get in Touch!
+                            {`Let's Get in Touch!`}
                         </p>
                         <p className='mt-2 text-lg font-normal text-secondaryColor'>
-                            Got a question, an idea, or just want to say hello? I'd be happy to connect with you.
+                            {`Got a question, an idea, or just want to say hello? I'd be happy to connect with you.`}
                         </p>
                     </div>
                     <div className='flex flex-col gap-1 text-primaryColor'>
@@ -86,7 +86,7 @@ export default function GetInTouch() {
                                 className='text-sm font-normal underline cursor-pointer text-primaryColor'
                                 onClick={() => copyToClipboard("0654361772", "Phone number")}
                             >
-                                (+66) 654361772
+                                {`(+66) 654361772`}
                             </p>
                         </div>
                         <div className='flex items-center gap-1'>
@@ -117,7 +117,7 @@ export default function GetInTouch() {
                         <div className='flex items-center gap-1'>
                             <PinIcon w={"16"} h={"16"} color="#FF7D2C" />
                             <p className='text-sm font-normal text-primaryColor'>
-                                Bangkok, Thailand 10140
+                                {`Bangkok, Thailand 10140`}
                             </p>
                         </div>
                     </div>

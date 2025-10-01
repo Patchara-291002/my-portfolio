@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import { BlopIcon, GithubIcon, LinkedinIcon, MailIcon, PhoneIcon, PinIcon, UserIcon } from '../Icon'
+import { useState } from 'react'
+import { MailIcon, PhoneIcon, UserIcon } from '../Icon'
 import emailjs from '@emailjs/browser'
 import { AlertRef } from './Alert'
 
