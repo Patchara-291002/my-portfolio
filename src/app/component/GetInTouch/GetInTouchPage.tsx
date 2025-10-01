@@ -11,7 +11,7 @@ import { SplitText } from 'gsap/SplitText';
 
 gsap.registerPlugin(SplitText)
 
-export default function GetInTouch() {
+export default function GetInTouchPage() {
     const textRef = useRef(null)
     const alertRef = useRef<AlertRef>(null)
 

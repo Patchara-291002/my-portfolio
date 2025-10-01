@@ -13,7 +13,7 @@ import 'swiper/css/pagination';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Project() {
+export default function ProjectPage() {
 
     const projects = [
         {
