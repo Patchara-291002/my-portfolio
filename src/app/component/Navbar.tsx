@@ -2,6 +2,7 @@
 
 import { MenuIcon, UserIcon, MailIcon, FolderIcon } from './Icon'
 import Resolution from '@/utils/ResolutionTracker';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 
@@ -58,15 +59,6 @@ export default function Navbar() {
 
 const DesktopNavbar = ({ path }: NavbarProps) => {
 
-    const handleDownloadCV = () => {
-        const link = document.createElement('a');
-        link.href = '/CV-Patchara Kaewnissai.pdf';
-        link.download = 'CV-Patchara Kaewnissai.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
     return (
         <div
             className='fixed top-0 left-0 z-50 w-full py-4 navbar-shadow bg-backgroundColor'
@@ -97,12 +89,13 @@ const DesktopNavbar = ({ path }: NavbarProps) => {
                             ))
                         }
                     </div>
-                    <button
-                        onClick={handleDownloadCV}
+                    <Link
+                        href="https://my-image-uploader-bucket.s3.ap-southeast-2.amazonaws.com/pdf/CV-Patchara-Kaewnissai.pdf"
+                        target='_blank'
                         className='bg-primaryColor py-[6px] px-[12px] rounded-xl font-semibold text-backgroundColor cursor-pointer hover:bg-accentColor hover:text-backgroundColor'
                     >
                         Download CV
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -112,15 +105,6 @@ const DesktopNavbar = ({ path }: NavbarProps) => {
 const MobileNavbar = ({ path }: NavbarProps) => {
 
     const [isNavbarOpen, setIsNavbarOpen] = useState<boolean>(false);
-
-    const handleDownloadCV = () => {
-        const link = document.createElement('a');
-        link.href = '/CV-Patchara Kaewnissai.pdf';
-        link.download = 'CV-Patchara-Kaewnissai.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
 
     return (
         <div
@@ -171,15 +155,14 @@ const MobileNavbar = ({ path }: NavbarProps) => {
                                         </button>
                                     ))
                                 }
-                                <button
-                                    className='w-full text-center px-3 py-2 text-sm font-semibold rounded-lg bg-primaryColor text-backgroundColor active:bg-accentColor active:text-backgroundColor'
-                                    onClick={() => {
-                                        handleDownloadCV();
-                                        setIsNavbarOpen(false);
-                                    }}
+                                <Link
+                                    href="https://my-image-uploader-bucket.s3.ap-southeast-2.amazonaws.com/pdf/CV-Patchara-Kaewnissai.pdf"
+                                    target='_blank'
+                                    className='w-full text-center px-3 py-2 text-sm font-semibold rounded-lg bg-primaryColor text-backgroundColor active:bg-accentColor active:text-backgroundColor block'
+                                    onClick={() => setIsNavbarOpen(false)}
                                 >
                                     Download CV
-                                </button>
+                                </Link>
                             </div>
                         )
                     }

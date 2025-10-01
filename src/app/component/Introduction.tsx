@@ -6,6 +6,7 @@ import { FileIcon, MailIcon } from './Icon'
 import { gsap } from 'gsap'
 import { useEffect, useState, useRef } from 'react'
 import Resolution from '@/utils/ResolutionTracker';
+import Link from 'next/link'
 
 
 interface TextType {
@@ -93,7 +94,7 @@ export default function Introduction() {
             >
                 <p
                     ref={titleRef}
-                    className={`text-${deviceType === 'desktop' ? '5xl': '3xl'} font-black text-center text-primaryColor`}
+                    className={`text-${deviceType === 'desktop' ? '5xl' : '3xl'} font-black text-center text-primaryColor`}
                 >
                     Hi, I’m PAT
                 </p>
@@ -135,18 +136,27 @@ export default function Introduction() {
                     ref={buttonRef}
                     className='flex items-center justify-center w-full gap-2 mt-4'
                 >
-                    <Button
-                        text={"Resume"}
-                        icon={<FileIcon w="24" h="24" color="#595D5F" />}
-                        textColor='#595D5F'
-                        bgColor='#FFFFFF'
-                    />
-                    <Button
-                        text={"Get in touch"}
-                        icon={<MailIcon w="24" h="24" color="#FFFFFF" />}
-                        textColor='#F4F4ED'
-                        bgColor='#FF7D2C'
-                    />
+                    <Link
+                        href="https://my-image-uploader-bucket.s3.ap-southeast-2.amazonaws.com/pdf/CV-Patchara-Kaewnissai.pdf"
+                        target='_blank'
+                    >
+                        <Button
+                            text={"Resume"}
+                            icon={<FileIcon w="24" h="24" color="#595D5F" />}
+                            textColor='#595D5F'
+                            bgColor='#FFFFFF'
+                        />
+                    </Link>
+                    <Link
+                        href={"#contact"}
+                    >
+                        <Button
+                            text={"Get in touch"}
+                            icon={<MailIcon w="24" h="24" color="#FFFFFF" />}
+                            textColor='#F4F4ED'
+                            bgColor='#FF7D2C'
+                        />
+                    </Link>
                 </div>
             </div>
         </div>
