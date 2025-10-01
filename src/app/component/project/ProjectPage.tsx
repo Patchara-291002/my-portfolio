@@ -31,7 +31,7 @@ export default function ProjectPage() {
         {
             name: 'Taskly – Task Management for Students',
             image: '/Home.jpg',
-            description: 'A web-based task management tool designed for students to create projects, collaborate with teammates, track task progress, and receive notifications. The system also provides visualization tools such as Kanban boards, Gantt charts, and timetables, along with other views to help students organize and monitor their tasks more effectively. In addition, the platform supports notification via LINE to ensure users never miss important updates.',
+            description: 'A web-based task management tool for students to create projects, collaborate with teammates, and track progress with notifications. It features Kanban boards, Gantt charts, timetables, and LINE integration to help students stay organized and updated.',
             techStack: [
                 'Next.js',
                 'Tailwind CSS',
