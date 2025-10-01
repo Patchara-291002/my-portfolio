@@ -97,7 +97,7 @@ export default function ProjectCardMobile({ project, isActive }: ProjectProps) {
                                 </button>
                                 {project.demoLink !== '' && (
                                     <button className='px-4 py-2 text-sm font-medium rounded-lg cursor-pointer bg-accentColor text-backgroundColor button-shadow'
-                                        onClick={() => window.open(project.githubLink, '_blank')}
+                                        onClick={() => window.open(project.demoLink, '_blank')}
                                     >
                                         Demo
                                     </button>
