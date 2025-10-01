@@ -19,7 +19,7 @@ body {
   color: var(--primary);
   background: var(--background);
   /* font-family: Arial, Helvetica, sans-serif; */
-} 
+}
 
 
 .navbar-shadow {
@@ -28,25 +28,4 @@ body {
 
 .button-shadow {
   box-shadow: 0px 2px 15px 4px rgba(0, 0, 0, 0.08);
-}
-
-/* ปรับ autocomplete dropdown */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #FF7D2C inset !important; /* background สี */
-    -webkit-text-fill-color: white !important; /* สีตัวอักษร */
-    background-color: #FF7D2C !important;
-}
-
-/* สำหรับ autocomplete suggestion list */
-input::-webkit-credentials-auto-fill-button {
-    background-color: #FF7D2C;
-}
-
-/* ปรับ suggestion items */
-input::-webkit-list-button {
-    background-color: #FF7D2C;
-    color: white;
 }

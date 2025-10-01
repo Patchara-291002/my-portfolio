@@ -104,7 +104,7 @@ const MobileNavbar = ({ path }: NavbarProps ) => {
 
     return (
         <div
-            className='z-50 w-full py-4 navbar-shadow'
+            className='w-full py-4 navbar-shadow bg-backgroundColor fixed z-[999]'
         >
             <div
                 className='max-w-[1280px] px-4 mx-auto flex justify-between items-center'

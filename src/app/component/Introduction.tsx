@@ -1,7 +1,12 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { GithubIcon, FileIcon, LinkedinIcon, MailIcon } from './Icon'
+import { gsap } from 'gsap'
+import { useEffect, useState, useRef } from 'react'
+import Resolution from '@/utils/ResolutionTracker';
 
 
 interface TextType {
@@ -16,7 +21,14 @@ interface ButtonProps {
     bgColor: string;
 }
 
+
 export default function Introduction() {
+
+    const headRef = useRef(null);
+    const titleRef = useRef(null);
+    const tagRef = useRef(null);
+    const codeRef = useRef(null);
+    const buttonRef = useRef(null);
 
     const LinkItem = [
         {
@@ -36,21 +48,53 @@ export default function Introduction() {
         }
     ]
 
+    const [deviceType, setDeviceType] = useState(Resolution.getDeviceType());
+
+    useEffect(() => {
+        setDeviceType(Resolution.getDeviceType());
+
+        const unsubscribe = Resolution.addListener(() => {
+            setDeviceType(Resolution.getDeviceType());
+        });
+
+        return () => unsubscribe();
+    }, [])
+
+    useEffect(() => {
+        gsap.set(headRef.current, { opacity: 0, y: 100 })
+        gsap.set(titleRef.current, { opacity: 0, y: 100 })
+        gsap.set(tagRef.current, { opacity: 0, y: 100 })
+        gsap.set(codeRef.current, { opacity: 0, y: 100 })
+        gsap.set(buttonRef.current, { opacity: 0, y: 100 })
+
+        const tl = gsap.timeline();
+
+        tl
+            .to(headRef.current, { opacity: 1, y: 0, duration: 0.8 })
+            .to(titleRef.current, { opacity: 1, y: 0, duration: 0.8 }, '-=0.5)')
+            .to(tagRef.current, { opacity: 1, y: 0, duration: 0.8 }, '-=0.5)')
+            .to(codeRef.current, { opacity: 1, y: 0, duration: 0.8 }, '-=0.5)')
+            .to(buttonRef.current, { opacity: 1, y: 0, duration: 0.8 }, '-=0.5)')
+
+    }, [])
+
     return (
         <div
-            className='flex flex-col items-center justify-center w-full h-screen gap-1 px-4'
+            className='flex pt-[72px] flex-col items-center justify-center w-full h-screen gap-1 px-4'
         >
             <Image
+                ref={headRef}
                 src='/A guy.png'
                 alt='A guy'
-                width={250}
-                height={250}
+                width={deviceType === 'desktop' ? 250 : 150}
+                height={deviceType === 'desktop' ? 250 : 150}
             />
             <div
                 className='flex flex-wrap flex-col w-full max-w-[800px] font-normal text-secondaryColor'
             >
                 <p
-                    className='text-5xl font-black text-center text-primaryColor'
+                    ref={titleRef}
+                    className={`text-${deviceType === 'desktop' ? '5xl': '3xl'} font-black text-center text-primaryColor`}
                 >
                     Hi, I’m PAT
                 </p>
@@ -58,11 +102,12 @@ export default function Introduction() {
                     className='flex flex-col w-full gap-1 mt-6 mb-1'
                 >
                     <div
+                        ref={tagRef}
                         className='flex flex-wrap items-center justify-center w-full gap-2'
                     >
                         <TagButton text={"Patchara Kaewnissai"} color={"#0197F6"} />
                         <TagButton text={"22 years old"} color={"#F7B801"} />
-                        <TagButton text={"Bachelor of Science (Applied Computer Science-Multimedia) KMUTT"} color={"#FF7D2C"} />
+                        <TagButton text={"B.Sc. in Applied Computer Science (Multimedia), KMUTT"} color={"#FF7D2C"} />
                         {/* {
                             LinkItem.map((item, index) => (
                                 <Link
@@ -86,8 +131,9 @@ export default function Introduction() {
                         } */}
                     </div>
                 </div>
-                <CodeMockup />
+                <CodeMockup ref={codeRef} />
                 <div
+                    ref={buttonRef}
                     className='flex items-center justify-center w-full gap-2 mt-4'
                 >
                     <Button
@@ -138,29 +184,29 @@ const Button = ({ text, icon, textColor, bgColor }: ButtonProps) => {
     )
 }
 
-const CodeMockup = () => {
+const CodeMockup = React.forwardRef<HTMLDivElement>((_, ref) => {
     return (
-        <div className="w-full mt-4 mockup-code bg-primaryColor">
+        <div className="w-full mt-4 text-sm mockup-code bg-primaryColor" ref={ref}>
             <pre data-prefix="~" className='flex'>
                 <code className='flex-1 text-yellow-500 text-pretty'>
-                    I enjoy building web applications from the ground up from designing intuitive user interfaces
+                    Passionate about building web applications from the ground up.
                 </code>
             </pre>
             <pre data-prefix="~" className='flex'>
                 <code className='flex-1 text-pink-500 text-pretty'>
-                    To building backend systems. Web development is something I’m truly passionate about.
+                    Enjoy both designing intuitive user interfaces and developing backend systems
                 </code>
             </pre>
             <pre data-prefix="~" className='flex'>
                 <code className='flex-1 text-blue-500 text-pretty'>
-                    I love turning ideas into real products and always enjoy learning new things along the way.
+                    Love turning ideas into real products
                 </code>
             </pre>
             <pre data-prefix="~" className='flex'>
                 <code className='flex-1 text-green-500 text-pretty'>
-                    If you’re interested in working together or just want to connect, feel free to get in touch.
+                    Open to collaboration and new connections – feel free to get in touch!
                 </code>
             </pre>
         </div>
     )
-}
+})
